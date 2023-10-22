@@ -1,0 +1,363 @@
+body{
+ background:white;
+}
+.Home {
+  margin: 0;
+  padding: 0;
+   background-image: url('./assets/backgroundimg.jpg');  
+   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat; 
+  height: 100vh; 
+}
+
+
+.clicked {
+  background-image: none; 
+  .search-bar-container {
+    padding-top:0;
+    padding-top:3%;
+  }
+  .searchicon{
+    display:none;
+  }
+}
+
+
+.search-bar-container {
+  position: relative;
+  display: flex;
+  justify-content: center; 
+  padding-top:8%;
+  height:2rem;
+  margin:0rem;
+}
+
+.search-bar {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width:50%;
+  height:5vh;
+  display: flex;
+  justify-content: center; 
+  position:absolute;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  font-size: 23px;
+  
+  padding: 20px;
+  color: #333;
+}
+  .searchicon{
+    display: flex;
+    justify-content: center; 
+    align-items:center; 
+    padding:7px;
+    padding-right:15px;
+    font-size:30px;
+    font-weight: 10; 
+  }
+
+  .logo {
+    position: absolute;
+    width:8rem;
+    top: 18%; 
+    right: 3%; 
+  }
+
+
+  
+  .grid-container {
+    padding-left:2rem;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(50px, 1fr));
+    grid-gap: 25px;
+    width: 60%;
+  }
+  
+  .layout{
+    margin:0px;
+  }
+  .card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width:100%;
+    padding:0rem;
+    margin:0rem;
+  }
+  
+  .image img {
+    padding-top:1rem;
+    max-width: 100%;
+    width: 159px; 
+    height: 200px;  
+  }
+  
+  .title {
+    text-align: center;
+    border:0rem;
+    margin:0px;
+    .price{
+      color:blue;
+      .strike{
+        color:black;
+      }
+    }
+  }
+  
+  
+
+.container{
+  margin-top:10rem;
+  display:flex;
+  flex-direction:column;
+  width: 100vw;
+}
+header {
+  padding:-5rem;
+  margin:0rem;
+  font-size:2rem;
+  display:flex;
+  justify-content:left;
+  align-items:center;
+  padding-bottom:1rem;
+  padding-left:5rem;
+  
+  margin-top:-4rem;
+}
+
+.main {
+  flex: 1; 
+  display: flex;
+}
+
+.aside {
+  width: 400px;
+  padding: 10px;
+  height:500vh;
+}
+
+.article {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1; 
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+}
+
+
+
+.categories {
+  margin-top: 20px;
+}
+
+.categories h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  display:flex;
+  align-items: left;
+  padding-left:5rem;
+}
+
+.categories label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display:flex;
+  align-items: left;
+  padding-left:5rem;
+
+
+}
+
+.categories input[type="checkbox"] {
+  margin-right: 5px;
+  cursor: pointer;
+  
+}
+
+.categories input[type="checkbox"]:checked + label {
+  font-weight: bold;
+  color: #007bff; 
+}
+
+.pricenav {
+  margin-top: 20px;
+}
+
+.pricenav h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: left;
+  padding-left:5rem;
+
+}
+
+.pricenav label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: left;
+  padding-left:5rem;
+
+}
+
+.pricenav input[type="checkbox"] {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.pricenav input[type="checkbox"]:checked + label {
+  font-weight: bold;
+  color: #007bff; 
+}
+.star{
+  padding-bottom:1rem;
+}
+.rating{
+  padding-left:5rem;
+}
+
+
+.card {
+  position: relative;
+  transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #ddd;
+  margin: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0); 
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.card .fa-heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
+}
+
+.card:hover .fa-heart {
+  opacity: 1; 
+} 
+.red-heart {
+  color: red;
+}
+
+.heart-icon {
+  font-size: 24px; 
+  border: 2px solid red; 
+  border-radius: 50%; 
+  padding: 10px; 
+  color: transparent; 
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-bar-container {
+    padding-top: 3%;
+  }
+
+  .search-bar {
+    width: 60%; 
+    margin: 0 auto;
+  }
+
+  .search-input {
+    font-size: 18px; 
+    padding: 10px; 
+  }
+
+  .logo {
+    width: 6rem; 
+    top: 12%; 
+    padding-left:30%;
+  }
+
+  .grid-container {
+    padding: 1rem;
+    width:50rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .search-bar-container {
+    padding-top: 8%;
+  }
+
+  .search-bar {
+    width: 50%;
+  }
+
+  .search-input {
+    font-size: 23px;
+    padding: 20px;
+  }
+
+  .logo {
+    width: 8rem;
+    top: 18%;
+    right: 3%;
+  }
+
+  .grid-container {
+    padding-left: 2rem;
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar-container {
+    padding-top: 3%;
+  }
+
+  .search-bar {
+    width: 80%; 
+    margin: 0 auto;
+  }
+
+  .search-input {
+    font-size: 18px; 
+    padding: 10px; 
+  }
+
+  .logo {
+    width: 6rem; 
+    top: 12%; 
+    right: 5%;
+  }
+
+  .grid-container {
+    padding: 1rem;
+    grid-template-columns: repeat(2, minmax(50px, 1fr)); /* Change the number of columns as needed */
+  }
+}
+
+
+
+
+
