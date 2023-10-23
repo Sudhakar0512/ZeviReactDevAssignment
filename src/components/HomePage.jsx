@@ -17,6 +17,9 @@ export default function HomePage() {
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [cart, setCart] = useState({});
+  const [isHoveredSearch, setIsHoveredSearch] = useState(false);
+  const [isTrends, setIsTrends] = useState([]);
+  const [isTrendsVisible, setTrendsVisible] = useState(true);
 
   useEffect(() => {
     axios
@@ -37,7 +40,27 @@ export default function HomePage() {
       .catch((error) => {
         console.log(error);
       });
+    axios
+      .get("https://fakestoreapi.com/products?limit=5")
+      .then((response) => {
+        console.log(response);
+        setIsTrends(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
+  const handleToggleTrends = () => {
+    setTrendsVisible(!isTrendsVisible);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHoveredSearch(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHoveredSearch(false);
+  };
 
   const toggleCartItem = (itemId) => {
     if (cart[itemId]) {
@@ -54,7 +77,7 @@ export default function HomePage() {
       <FontAwesomeIcon
         icon={faHeart}
         color="red"
-        style={{ opacity: 1 }} 
+        style={{ opacity: 1 }}
         onClick={() => toggleCartItem(itemId)}
       />
     ) : (
@@ -102,12 +125,14 @@ export default function HomePage() {
     }
   }
 
+  
+
   return (
     <div className={`Home ${isClicked ? "clicked" : ""}`}>
       <div className={"search-bar-container"}>
         <nav>
           <a href="/">
-            <img src={zevilogo} alt="" className="logo" />
+            <img src={zevilogo} alt="" className={`logo ${isClicked ? "logosrc" : "logonsrc"}`}/>  
           </a>
         </nav>
 
@@ -115,13 +140,41 @@ export default function HomePage() {
           <input
             type="text"
             placeholder="Search"
-            className="search-input"
+            className={`search-input ${isHoveredSearch} ? input-hovered : ""`}
             onClick={handleInputClick}
             value={search}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
             onChange={(e) => {
               setSearch(e.target.value);
             }}
           />
+          {isClicked && isTrendsVisible && (
+          <div className="trends" id="trends" >
+            {/* style={{ backgroundColor: '#f2f2f2' }} */}
+               <button className="cancel-button" onClick={handleToggleTrends}>
+                X
+               </button>
+              <h3 className="h3">Latest Trends</h3>
+              <div className="trends-container">
+                {isTrends &&
+                  isTrends.map((row, i) => (
+                    <div className="trend-item" key={i}>
+                      <div className="trend-image">
+                        <img src={row.image} alt={row.image} />
+                      </div>
+                      <h2 className="tittle">{row.title.substring(0, 10)}</h2>
+                    </div>
+                  ))}
+              </div>
+              <div className="trend-footer">
+                <h3>Popular Suggestions</h3>
+                <p>Striped shirt dress</p>
+                <p>Denim jumpsiut</p>
+                <p>Solid tsshirt</p>
+              </div>
+            </div>
+          )}
           <div>
             <FontAwesomeIcon icon="search" className="searchicon" />
           </div>
@@ -250,6 +303,9 @@ export default function HomePage() {
                               <div className="layout">
                                 <div className="image">
                                   <img src={row.image} alt={row.image} />
+                                  <button className="button">
+                                    View Product
+                                  </button>
                                 </div>
                                 <div className="title">
                                   <h2>{row.title.substring(0, 10)}</h2>
